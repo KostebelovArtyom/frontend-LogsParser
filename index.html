@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -11,18 +10,22 @@
         <header class="header">
             <div class = "title">Шайтан машина</div>
         </header>
-        <div class="editor-container">
+        <form action="/" method="POST" class="editor-container">
             <div class="input-section">
-                <textarea class="base-textarea pattern-textarea" placeholder="pattern"></textarea>
-                <textarea class="base-textarea samples-textarea" placeholder="samples"></textarea>
-                <button type="button" class="base-textarea button">butt</button>
+                <textarea name="samples" class="base-textarea pattern-textarea" placeholder="samples">{{ samples if samples else '' }}</textarea>
+                <textarea name="filter" class="base-textarea samples-textarea" placeholder="filter">{{ filter if filter else '' }}</textarea>
+                <button type="submit" class="base-textarea button">butt</button>
             </div>
-            <div class="output-section">
-                <div class="base-textarea output-content" id="outputContent">output</div>
+        </form>
+        <div class="output-section">
+            <div class="base-textarea output-content" id="outputContent">
+                {% if result %}
+                    {{ result }}
+                {% else %}
+                    Output will appear here
+                {% endif %}
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
